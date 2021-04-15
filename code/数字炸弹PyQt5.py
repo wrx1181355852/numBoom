@@ -69,8 +69,8 @@ class Setnumber:
 
         while True:
 
-            # self.minnum = int(self.ui.minlineEdit.text())
-            # self.maxnum = int(self.ui.maxlineEdit.text())
+            self.minnum = int(self.ui.minlineEdit.text())
+            self.maxnum = int(self.ui.maxlineEdit.text())
 
             if self.maxnum - self.minnum < 2:
                 QMessageBox.warning(self.ui, '错误提示！', '请输入正确范围。')
