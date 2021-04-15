@@ -14,8 +14,8 @@
    <string>数字炸弹</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../images.qrc">
-    <normaloff>:/pic/images/RY.ico</normaloff>:/pic/images/RY.ico</iconset>
+   <iconset>
+    <normaloff>../images/RY.ico</normaloff>../images/RY.ico</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -134,7 +134,7 @@
   <tabstop>cancelbutton</tabstop>
  </tabstops>
  <resources>
-  <include location="../images.qrc"/>
+  <include location="../image.qrc"/>
  </resources>
  <connections/>
 </ui>

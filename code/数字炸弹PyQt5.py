@@ -11,7 +11,6 @@ from PyQt5.QtGui import *
 from random import randint
 from playsound import *
 from threading import Thread
-# from PyQt5.QtCore import *
 import sys
 
 minding = 0
@@ -33,28 +32,30 @@ class Setnumber:
         self.ui.cancelbutton.clicked.connect(self.ui.close)
         self.minnum = 0
         self.maxnum = 0
-        self.intnum()
 
-    def intnum(self):
-        Thread(target=play_sound, args=('../sound/setin.mp3',), daemon=True).start()
         self.intValidator = QIntValidator()
         self.intValidator.setRange(0, 99999)
 
         self.ui.minlineEdit.setValidator(self.intValidator)
 
-        # self.ui.minlineEdit.setMaxLength(5)
         self.ui.minlineEdit.setPlaceholderText('最小值')
 
         self.ui.maxlineEdit.setValidator(self.intValidator)
 
-        # self.ui.maxlineEdit.setMaxLength(5)
         self.ui.maxlineEdit.setPlaceholderText('最大值')
 
+        self.intnum()
+
+
+    def intnum(self):
+
+        Thread(target=play_sound, args=('../sound/setin.mp3',), daemon=True).start()
+
+        # self.ui.minlineEdit.clear()
+        # self.ui.maxlineEdit.clear()
         self.ui.minlineEdit.setFocus()
-        # self.ui.minlineEdit.setFocus()
         self.ui.minlineEdit.returnPressed.connect(self.ui.maxlineEdit.setFocus)
 
-        # self.ui.maxlineEdit.returnPressed.connect(self.ui.okbutton.setFocus)
         self.ui.maxlineEdit.returnPressed.connect(self.cmp)
         self.ui.maxlineEdit.textChanged.connect(self.okbuttonsetEnabled)
 
@@ -68,17 +69,16 @@ class Setnumber:
 
         while True:
 
-            self.minnum = int(self.ui.minlineEdit.text())
-            self.maxnum = int(self.ui.maxlineEdit.text())
+            # self.minnum = int(self.ui.minlineEdit.text())
+            # self.maxnum = int(self.ui.maxlineEdit.text())
 
-            # print(type(self.minnum), self.minnum, type(self.maxnum), self.maxnum)
             if self.maxnum - self.minnum < 2:
-                QMessageBox.critical(self.ui, '错误提示！', '请输入正确范围。')
-
+                QMessageBox.warning(self.ui, '错误提示！', '请输入正确范围。')
                 self.ui.minlineEdit.clear()
                 self.ui.maxlineEdit.clear()
-                # self.ui.minlineEdit.setFocus()
                 self.intnum()
+
+
             else:
 
                 break

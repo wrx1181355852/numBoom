@@ -14,8 +14,8 @@
    <string>数字炸弹</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../images.qrc">
-    <normaloff>:/pic/images/RY.ico</normaloff>:/pic/images/RY.ico</iconset>
+   <iconset>
+    <normaloff>../images/RY.ico</normaloff>../images/RY.ico</iconset>
   </property>
   <property name="statusTip">
    <string>就绪</string>
@@ -217,7 +217,7 @@
   </action>
   <action name="updatepattaern">
    <property name="icon">
-    <iconset resource="../images.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/pic/images/Fire Elemental.ico</normaloff>:/pic/images/Fire Elemental.ico</iconset>
    </property>
    <property name="text">
@@ -229,7 +229,7 @@
   </action>
   <action name="updatenum">
    <property name="icon">
-    <iconset resource="../images.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/pic/images/doc.ico</normaloff>:/pic/images/doc.ico</iconset>
    </property>
    <property name="text">
@@ -241,7 +241,7 @@
   </action>
  </widget>
  <resources>
-  <include location="../images.qrc"/>
+  <include location="../image.qrc"/>
  </resources>
  <connections/>
 </ui>
