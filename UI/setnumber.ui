@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,8 +17,8 @@
    <string>数字炸弹</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../images/RY.ico</normaloff>../images/RY.ico</iconset>
+   <iconset resource="../image.qrc">
+    <normaloff>:/pic/images/RY.ico</normaloff>:/pic/images/RY.ico</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -90,6 +93,9 @@
         </item>
         <item row="2" column="1">
          <widget class="QPushButton" name="okbutton">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -97,7 +103,7 @@
            </sizepolicy>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::TabFocus</enum>
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="text">
            <string>确认</string>
@@ -136,5 +142,54 @@
  <resources>
   <include location="../image.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>minlineEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>maxlineEdit</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelbutton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>218</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>275</x>
+     <y>126</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>minlineEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>maxlineEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

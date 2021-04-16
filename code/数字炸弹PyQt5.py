@@ -2,7 +2,7 @@
 # @创建时间：2021/4/10 18:26
 # @Author  ：Administrator 
 # @Email :  1181355852@qq.com
-# @文件名：数字炸弹PyQt5.py
+# @文件名：数字炸弹PyQt51.py
 # @IDEName:PyCharm
 # @工程名：7dayshudypyqt
 from PyQt5.uic import loadUi
@@ -15,7 +15,8 @@ import sys
 
 minding = 0
 maxding = 0
-state=0
+state = 0
+
 
 def play_sound(file):  # 播放声音
     playsound(file)
@@ -46,26 +47,22 @@ class Setnumber:
 
         self.intnum()
 
-
     def intnum(self):
 
         Thread(target=play_sound, args=('../sound/setin.mp3',), daemon=True).start()
 
-        # self.ui.minlineEdit.clear()
-        # self.ui.maxlineEdit.clear()
         self.ui.minlineEdit.setFocus()
         self.ui.minlineEdit.returnPressed.connect(self.ui.maxlineEdit.setFocus)
 
-        self.ui.maxlineEdit.returnPressed.connect(self.cmp)
         self.ui.maxlineEdit.textChanged.connect(self.okbuttonsetEnabled)
-
+        self.ui.maxlineEdit.returnPressed.connect(self.cmp)
         self.ui.okbutton.clicked.connect(self.cmp)
 
     def okbuttonsetEnabled(self):
         self.ui.okbutton.setEnabled(True)
 
     def cmp(self):
-        global minding, maxding,state
+        global minding, maxding, state
 
         while True:
 
@@ -73,14 +70,12 @@ class Setnumber:
             self.maxnum = int(self.ui.maxlineEdit.text())
 
             if self.maxnum - self.minnum < 2:
-                QMessageBox.warning(self.ui, '错误提示！', '请输入正确范围。')
+                QMessageBox.warning(self.ui, '错误提示！', '请输入正确范围。', QMessageBox.Ok, QMessageBox.Ok)
                 self.ui.minlineEdit.clear()
                 self.ui.maxlineEdit.clear()
                 self.intnum()
 
-
             else:
-
                 break
         # print('ok')
         minding = self.minnum
@@ -91,19 +86,19 @@ class Setnumber:
 
 
 class Mainwindow:
-    global minding, maxding,state
+    global minding, maxding, state
 
     def __init__(self):
 
         super(Mainwindow, self).__init__()
-        self.ui =loadUi('../UI/mainwindow.ui')
+        self.ui = loadUi('../UI/mainwindow.ui')
         self.i = 0
         self.j = 0
         self.ui.endbutton.clicked.connect(self.ui.close)
         self.minNum = minding
         self.maxNum = maxding
         self.guess = 0
-        self.state=state
+        self.state = state
         self.num = randint(self.minNum + 1, self.maxNum - 1)
         self.ui.label2.setText(f'{self.minNum}-{self.maxNum}不包含{self.minNum}和{self.maxNum}')
         self.intValidator = QIntValidator()
@@ -157,7 +152,8 @@ class Mainwindow:
                 self.ui.label2.setText(f'{self.guess}')
                 self.ui.inlineEdit.clear()
                 QMessageBox.about(self.ui, '恭喜',
-                                  f'恭喜你，猜对啦！\n\t就是{self.guess}\n共用了{self.i}次,其中有效{self.i - self.j}，\n\t无效{self.j}次。')
+                                  f'恭喜你，猜对啦！\n\t就是{self.guess}\n共用了{self.i}次,其中有效{self.i - self.j}，\n\t无效{self.j}次。',
+                                  QMessageBox.Ok)
 
                 self.flush()
 
@@ -170,7 +166,7 @@ class Mainwindow:
                 self.ui.inlineEdit.clear()
 
     def flush(self):
-        if self.state==0:
+        if self.state == 0:
             Thread(target=play_sound, args=('../sound/guess.mp3',), daemon=True).start()
         elif self.state == 1:
             self.ui.close()
@@ -191,7 +187,7 @@ class Mainwindow:
         self.ui.close()
         self.setnum = Setnumber()
         self.setnum.ui.show()
-        state=self.state
+        state = self.state
 
     def updatepatt(self):
         global state
@@ -199,7 +195,8 @@ class Mainwindow:
         self.ui.hide()
         self.setnum = Setnumber()
         self.setnum.ui.show()
-        state=self.state
+        state = self.state
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

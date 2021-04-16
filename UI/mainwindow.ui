@@ -14,8 +14,8 @@
    <string>数字炸弹</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../images/RY.ico</normaloff>../images/RY.ico</iconset>
+   <iconset resource="../image.qrc">
+    <normaloff>:/pic/images/RY.ico</normaloff>:/pic/images/RY.ico</iconset>
   </property>
   <property name="statusTip">
    <string>就绪</string>
@@ -196,7 +196,14 @@
     <addaction name="separator"/>
     <addaction name="updatepattaern"/>
    </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>答案</string>
+    </property>
+    <addaction name="actionanswer"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_2"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="toolTip">
@@ -239,9 +246,42 @@
     <string>重新输入范围</string>
    </property>
   </action>
+  <action name="actionanswer">
+   <property name="icon">
+    <iconset>
+     <normalon>:/pic/images/RY.ico</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>显示答案</string>
+   </property>
+   <property name="toolTip">
+    <string>显示答案</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../image.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>endbutton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>292</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>211</x>
+     <y>121</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

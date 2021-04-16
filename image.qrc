@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="pic">
+    <file>images/boom.gif</file>
+    <file>images/doc.ico</file>
+    <file>images/Fire Elemental.ico</file>
+    <file>images/RY.ico</file>
+    <file>images/Water Elemental.ico</file>
+  </qresource>
+</RCC>
