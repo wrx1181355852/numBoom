@@ -107,4 +107,4 @@ class Ui_Dialog(object):
         self.label_2.setText(_translate("Dialog", "最大值"))
         self.okbutton.setText(_translate("Dialog", "确认"))
         self.cancelbutton.setText(_translate("Dialog", "取消"))
-import image_pyqt5_rc
+# import image_pyqt5_rc

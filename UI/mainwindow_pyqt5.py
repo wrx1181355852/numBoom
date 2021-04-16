@@ -158,4 +158,4 @@ class Ui_MainWindow(object):
         self.actionanswer.setText(_translate("MainWindow", "显示答案"))
         self.actionanswer.setToolTip(_translate("MainWindow", "显示答案"))
         self.actionanswer.setShortcut(_translate("MainWindow", "Ctrl+D"))
-import image_pyqt5_rc
+# import image_pyqt5_rc
